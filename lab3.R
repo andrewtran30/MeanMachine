@@ -4,6 +4,8 @@ library(ggplot2)
 library(dplyr)
 
 # Helper function to create transition matrix 
+# Create transition matrix where entry (i,j) represents 
+#number of times team i lost to team j, normalized by row
 create_transition_matrix <- function(data) {
   teams <- unique(c(data$Visiting_Team, data$Home_Team))
   n_teams <- length(teams)
@@ -38,12 +40,20 @@ compute_steady_state <- function(trans_matrix, n_iter = 10000) {
   return(state)
 }
 
+# Steady state vector for all years:
+# LAD: 0.0721, NYY: 0.0698, HOU: 0.0689, ... 
+
 # Part 1: All years analysis
 all_matrix <- create_transition_matrix(game_data)
 steady_state <- compute_steady_state(all_matrix)
 rankings <- sort(steady_state, decreasing = TRUE)
 print("Rankings across all years:")
 print(rankings)
+
+# How do the rankings of the top 5 teams (based on overall performance) 
+# change year by year? 
+# This analysis helps understand the consistency of team performance over 
+# time and identify dynasties or decline periods.
 
 # Part 2: Year-by-year analysis
 yearly_rankings <- lapply(unique(game_data$season), function(yr) {
@@ -77,6 +87,7 @@ ggplot(plot_data_filtered, aes(x = Year, y = Rank, color = Team, group = Team)) 
   scale_y_reverse() +
   theme_minimal() +
   labs(title = "Top 5 Teams Rankings Over Time")
+
 
 ggsave("ranking_changes.png")
 
