@@ -1,3 +1,8 @@
+# run_drive.R
+source("run_play.R")
+
+
+
 # Helper function to generate yards gained
 generate_yards <- function(down, ytg, fp) {
   sample(-5:20, 1)
