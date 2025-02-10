@@ -1,14 +1,16 @@
+# run_drive.R
+
+# Source the run_play functions
+source("run_play.R")
+
 run_drive <- function(down, ytg, fp) {
-  yards_gained <- sample(-5:20, 1)
-  new_fp <- fp + yards_gained
-  new_fp <- max(0, min(120, new_fp))
-  
+  # Use the run_play function from the sourced file
+  result <- run_play(down, ytg, fp)
   cat(sprintf("  Start FP: %d, Yards gained: %d, End FP: %d\n", 
-              fp, yards_gained, new_fp))
-  
+              fp, result$yards, result$fp))
   list(
-    down = 1,
-    ytg = min(10, 100 - new_fp),
-    fp = new_fp
+    down = result$down,
+    ytg = result$ytg,
+    fp = result$fp
   )
 }
