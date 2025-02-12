@@ -5,7 +5,7 @@ generate_yards <- function(down, ytg, fp) {
 
 # Handle turnovers
 check_turnover <- function() {
-  runif(1) < 0.1  # 10% chance of turnover
+  runif(1) < 0.02  # 2% chance of turnover
 }
 
 down_one <- function(ytg, fp) {
