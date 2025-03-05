@@ -72,7 +72,9 @@ model2 <- glm(count ~ ice_region,
 summary(model2)
 
 # Task 3: Shot Success Rate Model
-success_data <- shot_data %>%
+# Filter for shot events and prepare the data
+success_data <- nhl_data %>%
+  filter(Event %in% c("SHOT", "GOAL", "MISS")) %>%
   filter(!is.na(xC) & !is.na(yC)) %>%
   mutate(
     # Define success as shot being on goal (not a MISS)
@@ -81,11 +83,15 @@ success_data <- shot_data %>%
     net_x = ifelse(xC > 0, 89, -89),
     distance = sqrt((xC - net_x)^2 + yC^2),
     # Calculate angle (in radians)
-    angle = abs(atan2(yC, net_x - xC))
+    angle = abs(atan2(yC, net_x - xC)),
+    # Calculate goal differential
+    goal_diff = ifelse(Event_Team == Home_Team, 
+                       Home_Score - Away_Score,
+                       Away_Score - Home_Score)
   )
 
 # Fit logistic regression model
-model3 <- glm(success ~ distance + angle + poly(distance, 2) + poly(angle, 2),
+model3 <- glm(success ~ distance + angle + poly(distance, 2) + poly(angle, 2) + Type + goal_diff,
               family = binomial(link = "logit"),
               data = success_data)
 
@@ -94,12 +100,14 @@ summary(model3)
 # Visualize predicted probabilities
 grid_data <- expand.grid(
   distance = seq(0, 100, by = 5),
-  angle = seq(0, pi/2, length.out = 10)
+  angle = seq(0, pi/2, length.out = 10),
+  Type = levels(factor(success_data$Type))[1],  # Use the first shot type
+  goal_diff = 0  # Assume tied game for visualization
 )
 
 grid_data$pred_prob <- predict(model3, newdata = grid_data, type = "response")
 
-# Plot
+# Plot predicted probabilities
 ggplot(grid_data, aes(x = distance, y = angle, fill = pred_prob)) +
   geom_tile() +
   scale_fill_gradient(low = "blue", high = "red") +
@@ -108,3 +116,14 @@ ggplot(grid_data, aes(x = distance, y = angle, fill = pred_prob)) +
        y = "Angle (radians)",
        fill = "Probability") +
   theme_minimal()
+
+# Plot actual shot data
+ggplot(success_data, aes(x = xC, y = yC, color = factor(success))) +
+  geom_point(alpha = 0.5) +
+  scale_color_manual(values = c("red", "blue"), labels = c("Miss", "On Goal")) +
+  labs(title = "Shot Success by Location", 
+       x = "X Coordinate", 
+       y = "Y Coordinate",
+       color = "Shot Result") +
+  theme_minimal()
+
