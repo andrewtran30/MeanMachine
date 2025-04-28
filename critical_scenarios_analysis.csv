@@ -1,21 +1,21 @@
-"time_remaining","scenario","total_scenarios","go_for_it_count","go_for_it_pct","avg_wp_diff"
-2,"down_by_touchdown",10,10,100,0.0165815946173621
-5,"down_by_touchdown",10,10,100,0.0181570045040621
-10,"down_by_touchdown",10,7,70,0.0137333131644701
-15,"down_by_touchdown",10,5,50,0.012649391038263
-30,"down_by_touchdown",10,6,60,0.0111107646587491
-60,"down_by_touchdown",10,6,60,0.0102827356294611
-2,"down_by_field_goal",30,2,6.66666666666667,-0.0684277822454748
-5,"down_by_field_goal",30,3,10,-0.067948096813754
-10,"down_by_field_goal",30,3,10,-0.0465570234386958
-15,"down_by_field_goal",30,3,10,-0.0465576701173063
-30,"down_by_field_goal",30,4,13.3333333333333,-0.0440459062808428
-60,"down_by_field_goal",30,4,13.3333333333333,-0.044431795855115
-2,"tied_game",10,1,10,-0.0728253019787502
-5,"tied_game",10,1,10,-0.0745068470251508
-10,"tied_game",10,1,10,-0.0506798473182017
-15,"tied_game",10,1,10,-0.0540787323099794
-30,"tied_game",10,1,10,-0.048981010082946
-60,"tied_game",10,1,10,-0.0528418673619521
-2,"final_minutes",110,45,40.9090909090909,-0.0343321387913778
-5,"final_minutes",110,46,41.8181818181818,-0.034004388058917
+"time_remaining","scenario","scenario_label","total_scenarios","go_for_it_count","go_for_it_pct","avg_wp_diff"
+2,"down_by_touchdown","Down by 7 (Touchdown)",10,10,100,0.0165815946173621
+5,"down_by_touchdown","Down by 7 (Touchdown)",10,10,100,0.0181570045040621
+10,"down_by_touchdown","Down by 7 (Touchdown)",10,7,70,0.0137333131644701
+15,"down_by_touchdown","Down by 7 (Touchdown)",10,5,50,0.012649391038263
+30,"down_by_touchdown","Down by 7 (Touchdown)",10,6,60,0.0111107646587491
+60,"down_by_touchdown","Down by 7 (Touchdown)",10,6,60,0.0102827356294611
+2,"down_by_field_goal","Down by 1-3 (Field Goal Range)",30,2,6.66666666666667,-0.0684277822454748
+5,"down_by_field_goal","Down by 1-3 (Field Goal Range)",30,3,10,-0.067948096813754
+10,"down_by_field_goal","Down by 1-3 (Field Goal Range)",30,3,10,-0.0465570234386958
+15,"down_by_field_goal","Down by 1-3 (Field Goal Range)",30,3,10,-0.0465576701173063
+30,"down_by_field_goal","Down by 1-3 (Field Goal Range)",30,4,13.3333333333333,-0.0440459062808428
+60,"down_by_field_goal","Down by 1-3 (Field Goal Range)",30,4,13.3333333333333,-0.044431795855115
+2,"tied_game","Tied Game",10,1,10,-0.0728253019787502
+5,"tied_game","Tied Game",10,1,10,-0.0745068470251508
+10,"tied_game","Tied Game",10,1,10,-0.0506798473182017
+15,"tied_game","Tied Game",10,1,10,-0.0540787323099794
+30,"tied_game","Tied Game",10,1,10,-0.048981010082946
+60,"tied_game","Tied Game",10,1,10,-0.0528418673619521
+2,"final_minutes","Final 5 Minutes",110,45,40.9090909090909,-0.0343321387913778
+5,"final_minutes","Final 5 Minutes",110,46,41.8181818181818,-0.034004388058917

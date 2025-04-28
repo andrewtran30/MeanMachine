@@ -6,11 +6,12 @@ library(ggplot2)
 library(tidyr)
 
 # Source required files (uncomment if needed)
-# source("goal_to_go_data.R")
-# source("goal_to_go_models.R")
-# source("goal_to_go_fg_model.R")
-# source("goal_to_go_sampling.R")
-# source("goal_to_go_simulation.R")
+source("goal_to_go_data.R")
+source("goal_to_go_models.R")
+source("goal_to_go_fg_model.R")
+source("goal_to_go_sampling.R")
+source("goal_to_go_simulation.R")
+source("improved_simulation.R")
 
 # Function to analyze win probability across various game scenarios
 analyze_win_probability <- function(ytg_values = 1:10, 
