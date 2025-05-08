@@ -5,7 +5,7 @@ library(dplyr)
 library(ggplot2)
 library(tidyr)
 
-# Source required files (uncomment if needed)
+# Source required files 
 source("goal_to_go_data.R")
 source("goal_to_go_models.R")
 source("goal_to_go_fg_model.R")
